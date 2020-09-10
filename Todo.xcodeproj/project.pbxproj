@@ -13,6 +13,8 @@
 		72819FB2250987BC0025A10E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72819FB0250987BC0025A10E /* Main.storyboard */; };
 		72819FB4250987D10025A10E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72819FB3250987D10025A10E /* Assets.xcassets */; };
 		72819FB7250987D10025A10E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72819FB5250987D10025A10E /* LaunchScreen.storyboard */; };
+		72833283250A8F6200C4EFBF /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72833282250A8F6200C4EFBF /* Todo.swift */; };
+		72833285250A900900C4EFBF /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72833284250A900900C4EFBF /* APIError.swift */; };
 		72B178CF250A88A900493321 /* TodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B178CE250A88A900493321 /* TodoCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +27,8 @@
 		72819FB3250987D10025A10E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		72819FB6250987D10025A10E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		72819FB8250987D10025A10E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		72833282250A8F6200C4EFBF /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
+		72833284250A900900C4EFBF /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		72B178CE250A88A900493321 /* TodoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -74,6 +78,8 @@
 		72B178CB250A886F00493321 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				72833282250A8F6200C4EFBF /* Todo.swift */,
+				72833284250A900900C4EFBF /* APIError.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -169,6 +175,8 @@
 				72819FAB250987BC0025A10E /* AppDelegate.swift in Sources */,
 				72819FAD250987BC0025A10E /* SceneDelegate.swift in Sources */,
 				72B178CF250A88A900493321 /* TodoCell.swift in Sources */,
+				72833283250A8F6200C4EFBF /* Todo.swift in Sources */,
+				72833285250A900900C4EFBF /* APIError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
