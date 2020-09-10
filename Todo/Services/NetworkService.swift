@@ -22,7 +22,37 @@ class NetworkService {//Creating singleton. It basically is a shared instance in
         
         let task = session.dataTask(with: url) { (data, response, error) in
              
-            debugPrint(data)
+            if let error = error {//We grab the error passed from above here.
+                debugPrint(error.localizedDescription)//Returning error description.
+                return
+            }
+            
+            guard let data = data, let response = response as? HTTPURLResponse else {
+                debugPrint("Invalid data or response")
+                return
+            }//Returns empty if data is nil or response is nil.
+            
+            do {//Remember that everytime we do a try, we need to keep it within a do and catch block.
+                
+                if response.statusCode == 200 {
+                    //parse successful result(Todos)
+                    let items = try JSONDecoder().decode(Todos.self, from: data)//Decoding Todo item
+                    print(items)
+                    //Handle success
+                    
+                } else {
+                    //Show error to user.
+                    let err = try JSONDecoder().decode(APIError.self, from: data)//Taking error from data.
+                    
+                    //Handle error
+                }
+                
+            }
+            catch {
+                
+                debugPrint(error.localizedDescription)
+                
+            }
             
         }//We are creating a data task. We pass in the url. After the request is done, we will get back data, response and errors. PS: pick dataTask with completionHandler as we aren't downloading anything.
         task.resume()//Starting task.
