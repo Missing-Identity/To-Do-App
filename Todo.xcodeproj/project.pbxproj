@@ -15,6 +15,7 @@
 		72819FB7250987D10025A10E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72819FB5250987D10025A10E /* LaunchScreen.storyboard */; };
 		72833283250A8F6200C4EFBF /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72833282250A8F6200C4EFBF /* Todo.swift */; };
 		72833285250A900900C4EFBF /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72833284250A900900C4EFBF /* APIError.swift */; };
+		72833288250A90D200C4EFBF /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72833287250A90D200C4EFBF /* NetworkService.swift */; };
 		72B178CF250A88A900493321 /* TodoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72B178CE250A88A900493321 /* TodoCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		72819FB8250987D10025A10E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		72833282250A8F6200C4EFBF /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		72833284250A900900C4EFBF /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		72833287250A90D200C4EFBF /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		72B178CE250A88A900493321 /* TodoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -62,6 +64,7 @@
 		72819FA9250987BC0025A10E /* Todo */ = {
 			isa = PBXGroup;
 			children = (
+				72833286250A90BD00C4EFBF /* Services */,
 				72B178CD250A887B00493321 /* Controller */,
 				72B178CC250A887700493321 /* View */,
 				72B178CB250A886F00493321 /* Model */,
@@ -73,6 +76,14 @@
 				72819FB8250987D10025A10E /* Info.plist */,
 			);
 			path = Todo;
+			sourceTree = "<group>";
+		};
+		72833286250A90BD00C4EFBF /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				72833287250A90D200C4EFBF /* NetworkService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		72B178CB250A886F00493321 /* Model */ = {
@@ -177,6 +188,7 @@
 				72B178CF250A88A900493321 /* TodoCell.swift in Sources */,
 				72833283250A8F6200C4EFBF /* Todo.swift in Sources */,
 				72833285250A900900C4EFBF /* APIError.swift in Sources */,
+				72833288250A90D200C4EFBF /* NetworkService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
