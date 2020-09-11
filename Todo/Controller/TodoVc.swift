@@ -16,7 +16,9 @@ class TodoVc: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NetworkService.shared.getTodos()
+        NetworkService.shared.getTodos { (todos) in
+            debugPrint(todos)
+        }
     }
 
     @IBAction func addTodo(_ sender: Any) {

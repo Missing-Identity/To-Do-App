@@ -16,41 +16,44 @@ class NetworkService {//Creating singleton. It basically is a shared instance in
     
     let session = URLSession(configuration: .default)//Creating a URL session. URL session is a network management session. Default config to keep things simple for now.
     
-    func getTodos() {
+    func getTodos(onSuccess: @escaping (Todos) -> Void) {//escaping is basically here for it to leave the function here and then we pass back Todos when network request is done. Since this closure is not returning anything and is just passing a parameter, we don't need a return statement.
         
         let url = URL(string: "\(URL_BASE)")!//Creating url to use it in our URL session. We are force unwrapping as we already have a local server, if it was a dynamic url it wouldn't be required.
         
         let task = session.dataTask(with: url) { (data, response, error) in
-             
-            if let error = error {//We grab the error passed from above here.
-                debugPrint(error.localizedDescription)//Returning error description.
-                return
-            }
             
-            guard let data = data, let response = response as? HTTPURLResponse else {
-                debugPrint("Invalid data or response")
-                return
-            }//Returns empty if data is nil or response is nil.
-            
-            do {//Remember that everytime we do a try, we need to keep it within a do and catch block.
-                
-                if response.statusCode == 200 {
-                    //parse successful result(Todos)
-                    let items = try JSONDecoder().decode(Todos.self, from: data)//Decoding Todo item
-                    print(items)
-                    //Handle success
-                    
-                } else {
-                    //Show error to user.
-                    let err = try JSONDecoder().decode(APIError.self, from: data)//Taking error from data.
-                    
-                    //Handle error
+            DispatchQueue.main.async {//Whatever is inside here will run on the UI thread instead of background thread.
+                if let error = error {//We grab the error passed from above here.
+                    debugPrint(error.localizedDescription)//Returning error description.
+                    return
                 }
                 
-            }
-            catch {
+                guard let data = data, let response = response as? HTTPURLResponse else {
+                    debugPrint("Invalid data or response")
+                    return
+                }//Returns empty if data is nil or response is nil.
                 
-                debugPrint(error.localizedDescription)
+                do {//Remember that everytime we do a try, we need to keep it within a do and catch block.
+                    
+                    if response.statusCode == 200 {
+                        //parse successful result(Todos)
+                        let items = try JSONDecoder().decode(Todos.self, from: data)//Decoding Todo item
+                        onSuccess(items)
+                        //Handle success
+                        
+                    } else {
+                        //Show error to user.
+                        let err = try JSONDecoder().decode(APIError.self, from: data)//Taking error from data.
+                        
+                        //Handle error
+                    }
+                    
+                }
+                catch {
+                    
+                    debugPrint(error.localizedDescription)
+                    
+                }
                 
             }
             
