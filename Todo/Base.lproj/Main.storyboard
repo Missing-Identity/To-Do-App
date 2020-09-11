@@ -61,7 +61,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wuh-d5-gYT">
-                                                    <rect key="frame" x="314" y="20" width="40" height="40"/>
+                                                    <rect key="frame" x="314" y="12" width="40" height="56"/>
                                                     <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="GwB-0E-gw3"/>
@@ -72,12 +72,12 @@
                                             <constraints>
                                                 <constraint firstItem="4fn-Fu-432" firstAttribute="top" secondItem="JRE-lq-NSc" secondAttribute="topMargin" id="0cC-lS-NiX"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="4fn-Fu-432" secondAttribute="bottom" constant="9" id="Eqo-Uf-sSs"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="Wuh-d5-gYT" secondAttribute="bottom" constant="9" id="NFg-wk-Mv8"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Wuh-d5-gYT" secondAttribute="bottom" constant="1" id="NFg-wk-Mv8"/>
                                                 <constraint firstItem="Wuh-d5-gYT" firstAttribute="leading" secondItem="4fn-Fu-432" secondAttribute="trailing" constant="19" id="NTi-Ev-Xzm"/>
                                                 <constraint firstItem="Wuh-d5-gYT" firstAttribute="trailing" secondItem="JRE-lq-NSc" secondAttribute="trailingMargin" id="U1s-4V-MOj"/>
                                                 <constraint firstItem="Wuh-d5-gYT" firstAttribute="centerX" secondItem="4fn-Fu-432" secondAttribute="centerX" id="daQ-3Y-TED"/>
                                                 <constraint firstItem="4fn-Fu-432" firstAttribute="leading" secondItem="JRE-lq-NSc" secondAttribute="leadingMargin" id="ggr-ei-BMP"/>
-                                                <constraint firstItem="Wuh-d5-gYT" firstAttribute="top" secondItem="JRE-lq-NSc" secondAttribute="topMargin" constant="9" id="t2M-CZ-TBq"/>
+                                                <constraint firstItem="Wuh-d5-gYT" firstAttribute="top" secondItem="JRE-lq-NSc" secondAttribute="topMargin" constant="1" id="t2M-CZ-TBq"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -108,6 +108,7 @@
                     <connections>
                         <outlet property="prioritySegment" destination="I9x-Hh-Zcc" id="QGn-lq-hrb"/>
                         <outlet property="todoItemTxt" destination="xLK-GB-FSV" id="znp-Tr-SkG"/>
+                        <outlet property="todoTable" destination="chx-f0-tU0" id="e9B-7V-Zke"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
