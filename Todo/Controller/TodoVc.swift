@@ -24,6 +24,17 @@ class TodoVc: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         getTodos()
         
+//        NetworkService.shared.addTodo(todo: Todo(item: "TEST", priority: 2), onSuccess: { (todos) in
+//
+//            self.todos = todos.items
+//            self.todoTable.reloadData()
+//
+//        }) { (errorMessage) in
+//
+//        }
+        
+        //ALL THE LINES ABOVE CAN BE WRITTEN IF YOU WANT TO TEST THE POST REQUEST MANUALLY AND NOT VIA UI.
+        
     }
     
     func getTodos() {
