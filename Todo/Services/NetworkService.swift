@@ -16,7 +16,7 @@ class NetworkService {//Creating singleton. It basically is a shared instance in
     
     let session = URLSession(configuration: .default)//Creating a URL session. URL session is a network management session. Default config to keep things simple for now.
     
-    func getTodos(onSuccess: @escaping (Todos) -> Void) {//escaping is basically here for it to leave the function here and then we pass back Todos when network request is done. Since this closure is not returning anything and is just passing a parameter, we don't need a return statement.
+    func getTodos(onSuccess: @escaping (Todos) -> Void, onError: @escaping (String) -> Void) {//escaping is basically here for it to leave the function here and then we pass back Todos when network request is done. Since this closure is not returning anything and is just passing a parameter, we don't need a return statement.
         
         let url = URL(string: "\(URL_BASE)")!//Creating url to use it in our URL session. We are force unwrapping as we already have a local server, if it was a dynamic url it wouldn't be required.
         
@@ -29,7 +29,7 @@ class NetworkService {//Creating singleton. It basically is a shared instance in
                 }
                 
                 guard let data = data, let response = response as? HTTPURLResponse else {
-                    debugPrint("Invalid data or response")
+                    onError("Invalid data or response")
                     return
                 }//Returns empty if data is nil or response is nil.
                 
@@ -46,12 +46,13 @@ class NetworkService {//Creating singleton. It basically is a shared instance in
                         let err = try JSONDecoder().decode(APIError.self, from: data)//Taking error from data.
                         
                         //Handle error
+                        onError(err.message)//Giving out API's message.
                     }
                     
                 }
                 catch {
                     
-                    debugPrint(error.localizedDescription)
+                    onError(error.localizedDescription)
                     
                 }
                 
@@ -62,7 +63,40 @@ class NetworkService {//Creating singleton. It basically is a shared instance in
     }
     
     func addTodo(todo: Todo) {
+        let url = URL(string: "\(URL_BASE)\(URL_ADD_TODO)")!
+        var request = URLRequest(url: url)//This allows us to add more information to the request before sending it out. We need to do this for POST requests as the default is GET.
+        request.httpMethod = "POST"//POST means add new item.
         
+        do{
+            let body = try JSONEncoder().encode(todo)//body means the body of the http. Check the server for this. Encoding means converting our swift file to a JSON.
+            request.httpBody = body//So after we converted our todo object into JSON, we stuff it into the http body of the url request using this statement.
+            
+            let task = session.dataTask(with: request) { (data, response, error) in//Remember to pick the one with URLRequest and completion handler unlike just URL like for the GET task.
+                
+                if let error = error {
+                    //error
+                    return
+                }
+                guard let data = data, let response = response as? HTTPURLResponse else {
+                    //error
+                    return
+                }
+                
+                do{
+                    if response.statusCode == 200{
+                        
+                    } else {
+                        
+                    }
+                    
+                } catch {
+                    //error
+                }
+            }
+            task.resume()
+        } catch {
+            //error
+        }
     }
     
     

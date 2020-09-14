@@ -28,9 +28,11 @@ class TodoVc: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     func getTodos() {
         
-        NetworkService.shared.getTodos { (todos) in
-            self.todos = todos.items//This replaces the todos array values to whatever we get from the server. We keep .items here because that is where we stored our array of Todo. Check Todo.swift file for this.
-            self.todoTable.reloadData()
+        NetworkService.shared.getTodos(onSuccess: { (todos) in
+             self.todos = todos.items//This replaces the todos array values to whatever we get from the server. We keep .items here because that is where we stored our array of Todo. Check Todo.swift file for this.
+             self.todoTable.reloadData()
+        }) { (errorMessage) in
+             debugPrint(errorMessage)//Error Handling
         }
     }
 
