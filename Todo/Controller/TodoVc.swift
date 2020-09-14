@@ -24,17 +24,6 @@ class TodoVc: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         getTodos()
         
-//        NetworkService.shared.addTodo(todo: Todo(item: "TEST", priority: 2), onSuccess: { (todos) in
-//
-//            self.todos = todos.items
-//            self.todoTable.reloadData()
-//
-//        }) { (errorMessage) in
-//
-//        }
-        
-        //ALL THE LINES ABOVE CAN BE WRITTEN IF YOU WANT TO TEST THE POST REQUEST MANUALLY AND NOT VIA UI.
-        
     }
     
     func getTodos() {
@@ -48,6 +37,22 @@ class TodoVc: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
 
     @IBAction func addTodo(_ sender: Any) {
+        guard let todoItem = todoItemTxt.text else{//This just ensures that the text field is not empty.
+            // show error "You must enter a todo item"
+            return
+        }
+        
+        let todo = Todo(item: todoItem, priority: prioritySegment.selectedSegmentIndex)//This passes in text from the textfield as the item and the index of the selected segment as priority to the todo let.
+        NetworkService.shared.addTodo(todo: todo, onSuccess: { (todos) in
+
+            self.todoItemTxt.text = ""//Clears the text from the UItextfield.
+            self.todos = todos.items
+            self.todoTable.reloadData()
+
+        }) { (errorMessage) in
+            //show any errors to user on POST
+            debugPrint(errorMessage)
+        }
         
     }
     
